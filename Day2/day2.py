@@ -23,6 +23,7 @@
 
 # What would your total score be if everything goes exactly according to your strategy guide?
 ####################################################### 
+import os
 
 def get_points(oponent, us):
     points={"draw": 3, "lose":0, "win":6, "X":1, "Y":2, "Z":3}
@@ -64,7 +65,7 @@ def get_points(oponent, us):
 
 
 
-with open('input.txt') as f:  #Opens file and reads data to string "lines"
+with open(os.path.dirname(__file__) + "/" +'input.txt') as f:  #Opens file and reads data to string "lines"
     lines = f.readlines()
 
 total_sum = 0

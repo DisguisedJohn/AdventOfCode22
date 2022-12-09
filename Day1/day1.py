@@ -26,8 +26,9 @@
 
 # Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 ####################################################### 
+import os
 
-with open('input.txt') as f:  #Opens file and reads data to string "lines"
+with open(os.path.dirname(__file__) + "/" +'input.txt') as f:  #Opens file and reads data to string "lines"
     lines = f.read()
 
 elfs_raw = lines.split('\n\n') #Splits string by "\n\n"
