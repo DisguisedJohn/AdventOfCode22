@@ -63,7 +63,38 @@ def get_points(oponent, us):
             sum = points['draw'] + points['Z']
     return sum
 
+def get_sign(oponent,res):
+    points={"rock": 1, "paper":2, "scissors":3, "X":0, "Y":3, "Z":6}
+    #X - Lose
+    #Y - Draw
+    #Z - Win
 
+    if oponent == 'A': #Rock
+        if res == 'X': #Lose
+            sum = points[res] + points['scissors']
+        elif res == 'Y': #Draw
+            sum = points[res] + points['rock']
+        elif res == 'Z': #Win
+            sum = points[res] + points['paper']
+
+    elif oponent == 'B': #Paper
+        if res == 'X': #Lose
+            sum = points[res] + points['rock']
+        elif res == 'Y': #Draw
+             sum = points[res] + points['paper']
+        elif res == 'Z': #Win
+            sum = points[res] + points['scissors']
+
+    elif oponent == 'C': #Scissors
+        if res == 'X': #Lose
+            sum = points[res] + points['paper']
+        elif res == 'Y': #Draw
+            sum = points[res] + points['scissors']
+        elif res == 'Z': #Win
+            sum = points[res] + points['rock']
+    return sum
+
+os.system('cls')
 
 with open(os.path.dirname(__file__) + "/" +'input.txt') as f:  #Opens file and reads data to string "lines"
     lines = f.readlines()
@@ -71,5 +102,16 @@ with open(os.path.dirname(__file__) + "/" +'input.txt') as f:  #Opens file and r
 total_sum = 0
 for match in lines:
     total_sum += get_points(match[0], match[2])
-print(total_sum)
 
+print("Strategy 1 score is: " + str(total_sum))
+
+total_sum = 0
+for match in lines:
+    total_sum += get_sign(match[0], match[2])
+
+print("Strategy 2 score is: " + str(total_sum))
+
+#-> Part2
+#X - Lose
+#Y - Draw
+#Z - Win

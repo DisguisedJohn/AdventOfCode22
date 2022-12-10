@@ -27,6 +27,8 @@
 # Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 ####################################################### 
 import os
+os.system('cls')
+
 
 with open(os.path.dirname(__file__) + "/" +'input.txt') as f:  #Opens file and reads data to string "lines"
     lines = f.read()
@@ -44,7 +46,18 @@ for elf in elfs:
         sum += int(float(entry))
     elfs_sums.append(sum)
 
-print(max(elfs_sums))
+print("Max value was: " + str(max(elfs_sums)))
+
+top_three = 0
+for i in range(3):
+    temp_max = max(elfs_sums)
+    top_three += temp_max
+    max_index = elfs_sums.index(temp_max)
+    elfs_sums.pop(max_index)
+
+print("Top three sum is: " + str(top_three))
+
+
 
 #! Saved one for iteration 
 # with open('input.txt') as f:  #Opens file and reads data to string "lines"
